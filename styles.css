@@ -363,26 +363,6 @@ p {
   font-size: 0.9rem;
 }
 
-/* =========================
-   HERO REFINEMENTS
-========================= */
-.preview-label {
-  display: inline-flex;
-  margin-bottom: 12px;
-  padding: 7px 12px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.08);
-  color: #f3e6be;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  font-size: 0.78rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  font-weight: 700;
-}
-
-/* =========================
-   HERO VISUAL
-========================= */
 .hero-visual {
   position: relative;
 }
@@ -393,88 +373,50 @@ p {
   margin-left: auto;
 }
 
-.mockup-card {
-  border-radius: 28px;
+/* =========================
+   REAL BRAND IMAGES
+========================= */
+.hero-image-frame {
+  position: relative;
+  border-radius: 30px;
   overflow: hidden;
-}
-
-.mockup-card-luxury {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.03));
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
   border: 1px solid rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(18px);
   box-shadow:
     0 24px 60px rgba(0, 0, 0, 0.35),
+    0 0 40px rgba(212, 175, 55, 0.1),
     inset 0 1px 0 rgba(255, 255, 255, 0.12);
 }
 
-.browser-bar {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-  padding: 16px 18px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+.hero-brand-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  transition: transform 0.5s ease;
 }
 
-.dot {
-  width: 11px;
-  height: 11px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.28);
+.hero-image-frame:hover .hero-brand-image {
+  transform: scale(1.02);
 }
 
-.preview {
-  padding: 26px;
+.brand-logo-panel {
+  padding: 22px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.58);
+  border: 1px solid rgba(18, 18, 18, 0.06);
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.08);
 }
 
-.preview-top {
-  border-radius: 22px;
-  padding: 24px;
-  margin-bottom: 20px;
+.about-logo-image {
+  width: 100%;
+  border-radius: 18px;
+  object-fit: cover;
 }
 
-.preview-top-luxury {
-  background: linear-gradient(135deg, rgba(212, 175, 55, 0.18), rgba(255, 255, 255, 0.06));
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.preview-top h3,
-.preview-box strong {
-  color: #ffffff;
-}
-
-.preview-top p,
-.preview-box p {
-  color: rgba(255, 255, 255, 0.72);
-  margin-bottom: 0;
-}
-
-.preview-body {
-  display: grid;
-  gap: 16px;
-}
-
-.preview-box {
-  border-radius: 20px;
-  padding: 20px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.preview-box.orange {
-  background: linear-gradient(135deg, rgba(212, 175, 55, 0.17), rgba(255, 255, 255, 0.05));
-}
-
-.mini-button {
-  display: inline-block;
-  margin-top: 14px;
-  padding: 8px 14px;
-  border-radius: 999px;
-  background: linear-gradient(135deg, #d4af37 0%, #f7df84 100%);
-  color: #121212;
-  font-size: 0.82rem;
-  font-weight: 700;
-}
-
+/* =========================
+   FLOATING METRICS
+========================= */
 .floating-metric {
   position: absolute;
   min-width: 150px;
@@ -690,18 +632,20 @@ p {
     linear-gradient(180deg, #25252c 0%, #15151a 100%);
 }
 
-.featured-project-bg {
-  background:
-    radial-gradient(circle at top left, rgba(247, 223, 132, 0.22), transparent 30%),
-    linear-gradient(135deg, rgba(212, 175, 55, 0.24), rgba(255, 255, 255, 0.04)),
-    linear-gradient(180deg, #25252c 0%, #15151a 100%);
+.portfolio-real-image {
+  overflow: hidden;
 }
 
-.luxury-concept-bg {
-  background:
-    radial-gradient(circle at top right, rgba(247, 223, 132, 0.15), transparent 28%),
-    linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(212, 175, 55, 0.16)),
-    linear-gradient(180deg, #202027 0%, #121217 100%);
+.portfolio-real-image img {
+  display: block;
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  transition: transform 0.45s ease;
+}
+
+.portfolio-card:hover .portfolio-real-image img {
+  transform: scale(1.04);
 }
 
 .coming-soon-bg {
@@ -717,6 +661,7 @@ p {
   align-items: flex-start;
   justify-content: flex-start;
   padding: 18px;
+  pointer-events: none;
 }
 
 .portfolio-tag,
@@ -954,6 +899,93 @@ p {
 }
 
 /* =========================
+   BRYAN IDEA — LUXURY ACTIVE OUTLINE
+========================= */
+.glow-card,
+.service-card,
+.process-card,
+.highlight-card,
+.trust-item {
+  position: relative;
+  overflow: hidden;
+}
+
+.glow-card::before,
+.service-card::before,
+.process-card::before,
+.highlight-card::before,
+.trust-item::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1.2px;
+  border-radius: inherit;
+  background: linear-gradient(
+    120deg,
+    rgba(212, 175, 55, 0) 0%,
+    rgba(212, 175, 55, 0) 20%,
+    rgba(247, 223, 132, 0.95) 48%,
+    rgba(255, 240, 178, 1) 52%,
+    rgba(212, 175, 55, 0) 80%,
+    rgba(212, 175, 55, 0) 100%
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transform: translateX(-135%);
+  pointer-events: none;
+  z-index: 3;
+}
+
+.glow-card.in-view::before,
+.service-card.in-view::before,
+.process-card.in-view::before,
+.highlight-card.in-view::before,
+.trust-item.in-view::before {
+  opacity: 1;
+  animation: goldSweepLuxury 1.35s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes goldSweepLuxury {
+  0% {
+    opacity: 0;
+    transform: translateX(-135%);
+  }
+  15% {
+    opacity: 0.95;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(135%);
+  }
+}
+
+/* =========================
+   OPTIONAL PREMIUM HOVER POLISH
+========================= */
+.service-card,
+.process-card,
+.highlight-card,
+.trust-item,
+.portfolio-card,
+.brand-logo-panel,
+.hero-image-frame {
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
+}
+
+.brand-logo-panel:hover,
+.hero-image-frame:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 24px 50px rgba(0, 0, 0, 0.14),
+    0 0 30px rgba(212, 175, 55, 0.08);
+}
+
+/* =========================
    RESPONSIVE
 ========================= */
 @media (max-width: 1100px) {
@@ -1023,13 +1055,13 @@ p {
     grid-template-columns: 1fr;
   }
 
-  .preview,
   .contact-box,
   .impact-preview-box,
   .highlight-card,
   .service-card,
   .portfolio-content,
-  .process-card {
+  .process-card,
+  .brand-logo-panel {
     padding-left: 22px;
     padding-right: 22px;
   }
@@ -1076,10 +1108,13 @@ p {
     font-size: 1.8rem;
   }
 
-  .preview,
   .contact-box,
   .impact-preview-box,
   .process-card {
     padding: 20px;
+  }
+
+  .portfolio-real-image img {
+    height: 220px;
   }
 }
