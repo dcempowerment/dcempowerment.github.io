@@ -1146,28 +1146,3 @@ p {
     height: 220px;
   }
 }
-/* =========================
-   PRICING FIX (CLEAN + LUXURY)
-========================= */
-
-.service-package-list {
-  margin-top: 18px;
-}
-
-.service-package-list p {
-  margin: 12px 0;
-  line-height: 1.6;
-  font-size: 0.95rem;
-  color: rgba(18, 18, 18, 0.75);
-}
-
-.service-package-list strong {
-  display: block;
-  font-size: 1.05rem;
-  color: #121212;
-  font-weight: 700;
-}
-
-.service-package-list p strong + br {
-  display: none;
-}
