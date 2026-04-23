@@ -9,6 +9,7 @@
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -548,28 +549,44 @@ p {
    SERVICES
 ========================= */
 .services-section {
-  background: linear-gradient(180deg, #f6efe4 0%, #eee2d2 100%);
+  background:
+    radial-gradient(circle at 20% 12%, rgba(212, 175, 55, 0.18), transparent 18%),
+    linear-gradient(180deg, #f6efe4 0%, #eee2d2 100%);
 }
 
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 22px;
-  margin-top: 42px;
+  grid-template-columns: repeat(3, minmax(260px, 1fr));
+  gap: 26px;
+  margin-top: 46px;
+  align-items: stretch;
 }
 
 .service-card {
-  padding: 28px;
-  border-radius: 24px;
-  background: rgba(255, 255, 255, 0.62);
-  border: 1px solid rgba(18, 18, 18, 0.06);
-  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  min-height: 100%;
+  padding: 30px;
+  border-radius: 28px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(255, 255, 255, 0.6));
+  border: 1px solid rgba(139, 107, 25, 0.16);
+  box-shadow:
+    0 18px 44px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    border-color 0.35s ease,
+    background 0.35s ease;
 }
 
 .service-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 24px 52px rgba(0, 0, 0, 0.12);
+  transform: translateY(-8px);
+  border-color: rgba(212, 175, 55, 0.44);
+  box-shadow:
+    0 28px 70px rgba(0, 0, 0, 0.14),
+    0 0 0 1px rgba(212, 175, 55, 0.2),
+    0 0 38px rgba(212, 175, 55, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
 .service-label {
@@ -578,17 +595,48 @@ p {
   color: #8b6b19;
   font-size: 0.85rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.12em;
 }
 
 .service-card h3 {
   color: #121212;
   margin-bottom: 12px;
+  font-size: 1.28rem;
+  line-height: 1.18;
 }
 
 .service-card p {
   margin: 0;
   color: rgba(18, 18, 18, 0.72);
+}
+
+.service-package-list {
+  margin-top: 18px;
+}
+
+.service-package-list p {
+  margin: 0 0 14px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(139, 107, 25, 0.16);
+  line-height: 1.5;
+}
+
+.service-package-list strong {
+  display: inline-block;
+  color: #121212;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.service-package-list p:nth-child(2) strong {
+  color: #8b6b19;
+}
+
+.service-package-list p:nth-child(2) {
+  background: linear-gradient(90deg, rgba(212, 175, 55, 0.13), transparent 72%);
+  border-radius: 14px;
+  padding-left: 12px;
+  padding-right: 10px;
 }
 
 /* =========================
@@ -900,7 +948,9 @@ p {
 }
 
 /* =========================
-   LUXURY GOLD SHIMMER — SLOWER / ACROSS ALL BOXES
+   LUXURY GOLD SHIMMER AND SPIRAL OUTLINE
+   CSS-only version. It activates on hover and softly repeats.
+   True "on scroll every time" needs JavaScript, but this gives the premium effect without script.js.
 ========================= */
 .glow-card,
 .service-card,
@@ -918,6 +968,22 @@ p {
   isolation: isolate;
 }
 
+.glow-card > *,
+.service-card > *,
+.process-card > *,
+.highlight-card > *,
+.trust-item > *,
+.portfolio-card > *,
+.brand-logo-panel > *,
+.hero-image-frame > *,
+.impact-preview-box > *,
+.impact-mini-card > *,
+.contact-box > * {
+  position: relative;
+  z-index: 4;
+}
+
+/* sweeping gold light */
 .glow-card::before,
 .service-card::before,
 .process-card::before,
@@ -938,14 +1004,14 @@ p {
   border-radius: inherit;
   transform: skewX(-22deg);
   pointer-events: none;
-  z-index: 3;
+  z-index: 2;
   background: linear-gradient(
     115deg,
     rgba(255, 255, 255, 0) 0%,
     rgba(212, 175, 55, 0) 18%,
     rgba(212, 175, 55, 0.05) 34%,
     rgba(247, 223, 132, 0.14) 46%,
-    rgba(255, 240, 178, 0.22) 50%,
+    rgba(255, 240, 178, 0.24) 50%,
     rgba(247, 223, 132, 0.14) 54%,
     rgba(212, 175, 55, 0.05) 66%,
     rgba(212, 175, 55, 0) 82%,
@@ -955,16 +1021,103 @@ p {
   animation: luxuryGoldShimmer 14s ease-in-out infinite;
 }
 
-.service-card::before { animation-delay: 0s; }
-.portfolio-card::before { animation-delay: 1.5s; }
-.process-card::before { animation-delay: 2.5s; }
-.highlight-card::before { animation-delay: 4s; }
-.impact-mini-card::before { animation-delay: 3s; }
-.contact-box::before { animation-delay: 5s; }
-.trust-item::before { animation-delay: 2s; }
-.brand-logo-panel::before { animation-delay: 3.5s; }
-.hero-image-frame::before { animation-delay: 1s; }
-.impact-preview-box::before { animation-delay: 4.5s; }
+/* golden spiral outline */
+.glow-card::after,
+.service-card::after,
+.process-card::after,
+.highlight-card::after,
+.trust-item::after,
+.portfolio-card::after,
+.brand-logo-panel::after,
+.hero-image-frame::after,
+.impact-preview-box::after,
+.impact-mini-card::after,
+.contact-box::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1.6px;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 3;
+  opacity: 0;
+  background:
+    conic-gradient(
+      from 0deg,
+      transparent 0deg,
+      rgba(212, 175, 55, 0.2) 70deg,
+      rgba(247, 223, 132, 0.95) 110deg,
+      rgba(255, 240, 178, 0.95) 145deg,
+      rgba(212, 175, 55, 0.32) 210deg,
+      transparent 290deg,
+      transparent 360deg
+    );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: luxurySpiralOutline 9s ease-in-out infinite;
+}
+
+/* stronger pop when mouse is over each bubble */
+.glow-card:hover::after,
+.service-card:hover::after,
+.process-card:hover::after,
+.highlight-card:hover::after,
+.trust-item:hover::after,
+.portfolio-card:hover::after,
+.brand-logo-panel:hover::after,
+.hero-image-frame:hover::after,
+.impact-preview-box:hover::after,
+.impact-mini-card:hover::after,
+.contact-box:hover::after {
+  opacity: 1;
+  animation-duration: 2.4s;
+}
+
+/* delay each bubble so the gold activation feels like it travels */
+.service-card:nth-child(1)::before,
+.service-card:nth-child(1)::after { animation-delay: 0s; }
+
+.service-card:nth-child(2)::before,
+.service-card:nth-child(2)::after { animation-delay: 0.9s; }
+
+.service-card:nth-child(3)::before,
+.service-card:nth-child(3)::after { animation-delay: 1.8s; }
+
+.service-card:nth-child(4)::before,
+.service-card:nth-child(4)::after { animation-delay: 2.7s; }
+
+.service-card:nth-child(5)::before,
+.service-card:nth-child(5)::after { animation-delay: 3.6s; }
+
+.portfolio-card::before,
+.portfolio-card::after { animation-delay: 1.5s; }
+
+.process-card::before,
+.process-card::after { animation-delay: 2.5s; }
+
+.highlight-card::before,
+.highlight-card::after { animation-delay: 4s; }
+
+.impact-mini-card::before,
+.impact-mini-card::after { animation-delay: 3s; }
+
+.contact-box::before,
+.contact-box::after { animation-delay: 5s; }
+
+.trust-item::before,
+.trust-item::after { animation-delay: 2s; }
+
+.brand-logo-panel::before,
+.brand-logo-panel::after { animation-delay: 3.5s; }
+
+.hero-image-frame::before,
+.hero-image-frame::after { animation-delay: 1s; }
+
+.impact-preview-box::before,
+.impact-preview-box::after { animation-delay: 4.5s; }
 
 @keyframes luxuryGoldShimmer {
   0% {
@@ -986,6 +1139,76 @@ p {
   100% {
     left: 190%;
     opacity: 0;
+  }
+}
+
+@keyframes luxurySpiralOutline {
+  0% {
+    opacity: 0;
+    transform: rotate(0deg) scale(0.985);
+  }
+  8% {
+    opacity: 0.95;
+  }
+  38% {
+    opacity: 0.75;
+  }
+  65% {
+    opacity: 0.28;
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(360deg) scale(1.01);
+  }
+}
+
+/* Scroll reveal enhancement for browsers that support view timelines */
+@supports (animation-timeline: view()) {
+  .service-card,
+  .process-card,
+  .highlight-card,
+  .portfolio-card,
+  .impact-mini-card,
+  .trust-item {
+    animation: cardScrollPop both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 28%;
+  }
+
+  .service-card::after,
+  .process-card::after,
+  .highlight-card::after,
+  .portfolio-card::after,
+  .impact-mini-card::after,
+  .trust-item::after {
+    animation: scrollSpiralActivate both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 32%;
+  }
+}
+
+@keyframes cardScrollPop {
+  from {
+    opacity: 0.72;
+    transform: translateY(22px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes scrollSpiralActivate {
+  from {
+    opacity: 0;
+    transform: rotate(0deg) scale(0.98);
+  }
+  45% {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: rotate(360deg) scale(1.01);
   }
 }
 
@@ -1027,7 +1250,7 @@ p {
   .impact-mini-grid,
   .trust-strip-grid,
   .process-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(260px, 1fr));
   }
 
   .mockup-shell {
@@ -1142,7 +1365,25 @@ p {
     padding: 20px;
   }
 
+  .service-card {
+    padding: 24px 22px;
+  }
+
   .portfolio-real-image img {
     height: 220px;
+  }
+}
+
+/* =========================
+   REDUCED MOTION
+========================= */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.001ms !important;
   }
 }
