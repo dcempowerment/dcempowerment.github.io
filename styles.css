@@ -9,7 +9,6 @@
 
 html {
   scroll-behavior: smooth;
-  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -46,7 +45,6 @@ footer {
 h1,
 h2,
 h3,
-h4,
 p {
   margin-top: 0;
 }
@@ -555,30 +553,23 @@ p {
 
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(260px, 1fr));
-  gap: 26px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
   margin-top: 42px;
-  align-items: stretch;
 }
 
 .service-card {
-  padding: 30px;
-  border-radius: 28px;
-  background: rgba(255, 255, 255, 0.72);
-  border: 1px solid rgba(139, 107, 25, 0.16);
-  box-shadow:
-    0 18px 44px rgba(0, 0, 0, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.78);
-  transition: transform 0.45s ease, box-shadow 0.45s ease, border-color 0.45s ease;
+  padding: 28px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.62);
+  border: 1px solid rgba(18, 18, 18, 0.06);
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .service-card:hover {
-  transform: translateY(-7px);
-  border-color: rgba(212, 175, 55, 0.42);
-  box-shadow:
-    0 28px 70px rgba(0, 0, 0, 0.14),
-    0 0 34px rgba(212, 175, 55, 0.16),
-    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  transform: translateY(-6px);
+  box-shadow: 0 24px 52px rgba(0, 0, 0, 0.12);
 }
 
 .service-label {
@@ -593,52 +584,11 @@ p {
 .service-card h3 {
   color: #121212;
   margin-bottom: 12px;
-  font-size: 1.26rem;
-  line-height: 1.2;
 }
 
 .service-card p {
   margin: 0;
   color: rgba(18, 18, 18, 0.72);
-}
-
-.service-package-list {
-  margin-top: 18px;
-}
-
-.package-item {
-  margin-top: 14px;
-  padding-top: 14px;
-  border-top: 1px solid rgba(139, 107, 25, 0.16);
-}
-
-.package-item h4 {
-  margin: 0 0 5px;
-  color: #121212;
-  font-size: 1rem;
-  line-height: 1.25;
-}
-
-.package-item .price {
-  margin: 0 0 4px;
-  color: #8b6b19;
-  font-size: 1.28rem;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-}
-
-.package-item .desc {
-  margin: 0;
-  color: rgba(18, 18, 18, 0.62);
-  font-size: 0.92rem;
-  line-height: 1.45;
-}
-
-.featured-package {
-  padding: 16px;
-  border-radius: 18px;
-  background: linear-gradient(135deg, rgba(212, 175, 55, 0.16), rgba(255, 255, 255, 0.34));
-  border: 1px solid rgba(212, 175, 55, 0.3);
 }
 
 /* =========================
@@ -950,7 +900,7 @@ p {
 }
 
 /* =========================
-   LUXURY GLOW EFFECT â€” NO SPIRAL
+   LUXURY GOLD SHIMMER — SLOWER / ACROSS ALL BOXES
 ========================= */
 .glow-card,
 .service-card,
@@ -968,21 +918,6 @@ p {
   isolation: isolate;
 }
 
-.glow-card > *,
-.service-card > *,
-.process-card > *,
-.highlight-card > *,
-.trust-item > *,
-.portfolio-card > *,
-.brand-logo-panel > *,
-.hero-image-frame > *,
-.impact-preview-box > *,
-.impact-mini-card > *,
-.contact-box > * {
-  position: relative;
-  z-index: 4;
-}
-
 .glow-card::before,
 .service-card::before,
 .process-card::before,
@@ -996,62 +931,61 @@ p {
 .contact-box::before {
   content: "";
   position: absolute;
-  inset: -45%;
+  top: -35%;
+  left: -170%;
+  width: 72%;
+  height: 190%;
   border-radius: inherit;
+  transform: skewX(-22deg);
   pointer-events: none;
-  z-index: 2;
-  background:
-    radial-gradient(circle, rgba(247, 223, 132, 0.18), transparent 42%),
-    linear-gradient(
-      120deg,
-      transparent 20%,
-      rgba(255, 240, 178, 0.2) 43%,
-      rgba(212, 175, 55, 0.16) 55%,
-      transparent 80%
-    );
+  z-index: 3;
+  background: linear-gradient(
+    115deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(212, 175, 55, 0) 18%,
+    rgba(212, 175, 55, 0.05) 34%,
+    rgba(247, 223, 132, 0.14) 46%,
+    rgba(255, 240, 178, 0.22) 50%,
+    rgba(247, 223, 132, 0.14) 54%,
+    rgba(212, 175, 55, 0.05) 66%,
+    rgba(212, 175, 55, 0) 82%,
+    rgba(255, 255, 255, 0) 100%
+  );
   opacity: 0;
-  transform: translateX(-45%) rotate(12deg);
-  transition:
-    opacity 1.1s ease,
-    transform 1.6s ease;
-  animation: softLuxuryGlow 12s ease-in-out infinite;
+  animation: luxuryGoldShimmer 14s ease-in-out infinite;
 }
 
-.glow-card:hover::before,
-.service-card:hover::before,
-.process-card:hover::before,
-.highlight-card:hover::before,
-.trust-item:hover::before,
-.portfolio-card:hover::before,
-.brand-logo-panel:hover::before,
-.hero-image-frame:hover::before,
-.impact-preview-box:hover::before,
-.impact-mini-card:hover::before,
-.contact-box:hover::before {
-  opacity: 1;
-  transform: translateX(38%) rotate(12deg);
-}
+.service-card::before { animation-delay: 0s; }
+.portfolio-card::before { animation-delay: 1.5s; }
+.process-card::before { animation-delay: 2.5s; }
+.highlight-card::before { animation-delay: 4s; }
+.impact-mini-card::before { animation-delay: 3s; }
+.contact-box::before { animation-delay: 5s; }
+.trust-item::before { animation-delay: 2s; }
+.brand-logo-panel::before { animation-delay: 3.5s; }
+.hero-image-frame::before { animation-delay: 1s; }
+.impact-preview-box::before { animation-delay: 4.5s; }
 
-.service-card:nth-child(1)::before { animation-delay: 0s; }
-.service-card:nth-child(2)::before { animation-delay: 1s; }
-.service-card:nth-child(3)::before { animation-delay: 2s; }
-.service-card:nth-child(4)::before { animation-delay: 3s; }
-.service-card:nth-child(5)::before { animation-delay: 4s; }
-
-@keyframes softLuxuryGlow {
+@keyframes luxuryGoldShimmer {
   0% {
+    left: -170%;
     opacity: 0;
-    transform: translateX(-45%) rotate(12deg);
   }
-  38% {
-    opacity: 0.28;
+  10% {
+    opacity: 0.55;
   }
-  68% {
-    opacity: 0.16;
+  30% {
+    opacity: 0.85;
+  }
+  50% {
+    opacity: 0.65;
+  }
+  60% {
+    opacity: 0;
   }
   100% {
+    left: 190%;
     opacity: 0;
-    transform: translateX(38%) rotate(12deg);
   }
 }
 
@@ -1093,7 +1027,7 @@ p {
   .impact-mini-grid,
   .trust-strip-grid,
   .process-grid {
-    grid-template-columns: repeat(2, minmax(260px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .mockup-shell {
@@ -1208,25 +1142,7 @@ p {
     padding: 20px;
   }
 
-  .service-card {
-    padding: 24px 22px;
-  }
-
   .portfolio-real-image img {
     height: 220px;
-  }
-}
-
-/* =========================
-   REDUCED MOTION
-========================= */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.001ms !important;
-    animation-iteration-count: 1 !important;
-    scroll-behavior: auto !important;
-    transition-duration: 0.001ms !important;
   }
 }
