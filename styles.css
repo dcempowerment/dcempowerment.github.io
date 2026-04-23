@@ -769,7 +769,7 @@ p {
   overflow: hidden;
 }
 
-.impact-preview-box::before {
+.impact-preview-box::after {
   content: "";
   position: absolute;
   inset: auto -120px -120px auto;
@@ -778,6 +778,7 @@ p {
   border-radius: 50%;
   background: radial-gradient(circle, rgba(212, 175, 55, 0.18), transparent 68%);
   pointer-events: none;
+  z-index: 1;
 }
 
 .impact-preview-content {
@@ -899,65 +900,92 @@ p {
 }
 
 /* =========================
-   BRYAN IDEA — LUXURY ACTIVE OUTLINE
+   LUXURY GOLD SHIMMER — SLOWER / ACROSS ALL BOXES
 ========================= */
 .glow-card,
 .service-card,
 .process-card,
 .highlight-card,
-.trust-item {
+.trust-item,
+.portfolio-card,
+.brand-logo-panel,
+.hero-image-frame,
+.impact-preview-box,
+.impact-mini-card,
+.contact-box {
   position: relative;
   overflow: hidden;
+  isolation: isolate;
 }
 
 .glow-card::before,
 .service-card::before,
 .process-card::before,
 .highlight-card::before,
-.trust-item::before {
+.trust-item::before,
+.portfolio-card::before,
+.brand-logo-panel::before,
+.hero-image-frame::before,
+.impact-preview-box::before,
+.impact-mini-card::before,
+.contact-box::before {
   content: "";
   position: absolute;
-  inset: 0;
-  padding: 1.2px;
+  top: -35%;
+  left: -170%;
+  width: 72%;
+  height: 190%;
   border-radius: inherit;
-  background: linear-gradient(
-    120deg,
-    rgba(212, 175, 55, 0) 0%,
-    rgba(212, 175, 55, 0) 20%,
-    rgba(247, 223, 132, 0.95) 48%,
-    rgba(255, 240, 178, 1) 52%,
-    rgba(212, 175, 55, 0) 80%,
-    rgba(212, 175, 55, 0) 100%
-  );
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  opacity: 0;
-  transform: translateX(-135%);
+  transform: skewX(-22deg);
   pointer-events: none;
   z-index: 3;
+  background: linear-gradient(
+    115deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(212, 175, 55, 0) 18%,
+    rgba(212, 175, 55, 0.05) 34%,
+    rgba(247, 223, 132, 0.14) 46%,
+    rgba(255, 240, 178, 0.22) 50%,
+    rgba(247, 223, 132, 0.14) 54%,
+    rgba(212, 175, 55, 0.05) 66%,
+    rgba(212, 175, 55, 0) 82%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  opacity: 0;
+  animation: luxuryGoldShimmer 14s ease-in-out infinite;
 }
 
-.glow-card.in-view::before,
-.service-card.in-view::before,
-.process-card.in-view::before,
-.highlight-card.in-view::before,
-.trust-item.in-view::before {
-  opacity: 1;
-  animation: goldSweepLuxury 1.35s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-}
+.service-card::before { animation-delay: 0s; }
+.portfolio-card::before { animation-delay: 1.5s; }
+.process-card::before { animation-delay: 2.5s; }
+.highlight-card::before { animation-delay: 4s; }
+.impact-mini-card::before { animation-delay: 3s; }
+.contact-box::before { animation-delay: 5s; }
+.trust-item::before { animation-delay: 2s; }
+.brand-logo-panel::before { animation-delay: 3.5s; }
+.hero-image-frame::before { animation-delay: 1s; }
+.impact-preview-box::before { animation-delay: 4.5s; }
 
-@keyframes goldSweepLuxury {
+@keyframes luxuryGoldShimmer {
   0% {
+    left: -170%;
     opacity: 0;
-    transform: translateX(-135%);
   }
-  15% {
-    opacity: 0.95;
+  10% {
+    opacity: 0.55;
+  }
+  30% {
+    opacity: 0.85;
+  }
+  50% {
+    opacity: 0.65;
+  }
+  60% {
+    opacity: 0;
   }
   100% {
+    left: 190%;
     opacity: 0;
-    transform: translateX(135%);
   }
 }
 
